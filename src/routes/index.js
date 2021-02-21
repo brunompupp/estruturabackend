@@ -1,14 +1,11 @@
 'use strict';
 const express = require('express');
-const path = require('path');
+const controller = require('../controllers/index');
 const routes = express.Router();
 
-routes.get('/', (req,res)=>{
-
-  const index = path.resolve(__dirname, '..', 'public', 'index.html');
-
-  return res.sendFile(index);
-
-});
+routes.get('/', controller.index);
+routes.post('/', controller.create);
+routes.put('/:id', controller.update);
+routes.delete('/:id', controller.delete)
 
 module.exports = routes;
